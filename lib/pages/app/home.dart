@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 
 class HomeApp extends StatelessWidget {
   HomeApp({super.key});
@@ -323,22 +324,57 @@ class HomeApp extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                width: 340,
-                height: 70,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/istiqlal.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+              FlutterCarousel(
+                options: CarouselOptions(
+                  height: 70,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 50),
+                  autoPlayAnimationDuration: Duration(milliseconds: 200),
+                  pauseAutoPlayOnTouch: true,
+                  showIndicator: false,
+                  enableInfiniteScroll: true,
                 ),
+                items: [
+                  'assets/images/istiqlal.jpg',
+                ].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: 315,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10),
+                          ),
+                          image: DecorationImage(
+                            image: AssetImage('$i'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
               ),
+              // Container(
+              //   width: 340,
+              //   height: 70,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.only(
+              //       topLeft: Radius.circular(10),
+              //       topRight: Radius.circular(10),
+              //       bottomLeft: Radius.circular(10),
+              //       bottomRight: Radius.circular(10),
+              //     ),
+              //     image: DecorationImage(
+              //       image: AssetImage('assets/images/istiqlal.jpg'),
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
